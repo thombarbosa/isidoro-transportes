@@ -21,11 +21,11 @@
 :root {
   --background-color: #ffffff;
   /* Background color for the entire website, including individual sections */
-  --default-color: #555555;
+  --default-color: #323232;
   /* Default color used for the majority of the text content across the entire website */
   --heading-color: #151515;
   /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #317d2a;
+  --accent-color: rgb(72, 176, 44);
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
@@ -367,7 +367,7 @@ h6 {
     color: var(--nav-dropdown-color);
     padding: 10px 20px;
     font-family: var(--nav-font);
-    font-size: 17px;
+    font-size: 25px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -1085,7 +1085,7 @@ section,
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
-.testimonials {
+/* .testimonials {
   padding: 80px 0;
   position: relative;
 }
@@ -1193,12 +1193,12 @@ section,
   .testimonials .testimonial-item p {
     width: 80%;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Pricing Section
 --------------------------------------------------------------*/
-.pricing .pricing-item {
+/* .pricing .pricing-item {
   background-color: var(--surface-color);
   box-shadow: 0 3px 20px -2px rgba(0, 0, 0, 0.1);
   border-top: 4px solid var(--background-color);
@@ -1308,7 +1308,7 @@ section,
     max-width: 100%;
     margin: 0 auto 30px auto;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Faq Section
@@ -1390,7 +1390,7 @@ section,
 /*--------------------------------------------------------------
 # Team Section
 --------------------------------------------------------------*/
-.team .team h3 {
+/* .team .team h3 {
   font-size: 20px;
 }
 
@@ -1497,7 +1497,7 @@ section,
 
 .team .slider-nav a:first-child {
   margin-right: 5px;
-}
+} */
 
 /*--------------------------------------------------------------
 # Contact Section
@@ -1575,71 +1575,9 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Portfolio Details Section
---------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
-  opacity: 1;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
-}
-
-.portfolio-details .portfolio-info {
-  background-color: var(--surface-color);
-  padding: 30px;
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
-}
-
-.portfolio-details .portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-}
-
-.portfolio-details .portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.portfolio-details .portfolio-info ul li+li {
-  margin-top: 10px;
-}
-
-.portfolio-details .portfolio-description {
-  padding-top: 30px;
-}
-
-.portfolio-details .portfolio-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.portfolio-details .portfolio-description p {
-  padding: 0;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-/*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
-.service-details .services-list {
+/* .service-details .services-list {
   background-color: var(--surface-color);
   padding: 10px 30px;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
@@ -1700,11 +1638,11 @@ section,
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
-}
+} */
 
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
+/* .starter-section {
+  Add your styles here 
+} */
