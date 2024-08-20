@@ -1,15 +1,3 @@
-/**
-* Template Name: Knight
-* Template URL: https://bootstrapmade.com/knight-free-bootstrap-theme/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
 /* Fonts */
 :root {
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -84,6 +72,41 @@ a {
   transition: 0.3s;
 }
 
+/* Whatsapp button */
+.whatsapp-button {
+  position: fixed;
+  bottom: 70px;
+  right: 11px;
+  background-color: #25D366;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none;
+  /* Inicialmente invisível */
+  transition: all 0.4s;
+}
+
+.whatsapp-button.show {
+  display: block;
+  /* Aparecerá com o scroll */
+  opacity: 1;
+}
+
+.whatsapp-button.hide {
+  opacity: 0;
+}
+
+.whatsapp-button:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.whatsapp-button img {
+  width: 30px;
+  height: 30px;
+}
+
 a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
@@ -119,6 +142,21 @@ h6 {
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+}
+
+/* CSS para mensagens com transição suave */
+.error-message, .sent-message {
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none; /* Impede interações com o elemento enquanto está oculto */
+}
+
+.d-block {
+  display: block;
 }
 
 .php-email-form .loading {
@@ -468,60 +506,6 @@ h6 {
   position: relative;
 }
 
-.footer .footer-newsletter {
-  background-color: color-mix(in srgb, var(--default-color), transparent 97%);
-  padding: 50px 0;
-}
-
-.footer .footer-newsletter h4 {
-  font-size: 24px;
-}
-
-.footer .footer-newsletter .newsletter-form {
-  margin-top: 30px;
-  margin-bottom: 15px;
-  padding: 6px 8px;
-  position: relative;
-  border-radius: 4px;
-  background-color: var(--surface-color);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
-  display: flex;
-  transition: 0.3s;
-  border-radius: 50px;
-}
-
-.footer .footer-newsletter .newsletter-form:focus-within {
-  border-color: var(--accent-color);
-}
-
-.footer .footer-newsletter .newsletter-form input[type=email] {
-  border: 0;
-  padding: 4px;
-  width: 100%;
-  background-color: var(--surface-color);
-  color: var(--default-color);
-}
-
-.footer .footer-newsletter .newsletter-form input[type=email]:focus-visible {
-  outline: none;
-}
-
-.footer .footer-newsletter .newsletter-form input[type=submit] {
-  border: 0;
-  font-size: 16px;
-  padding: 0 20px;
-  margin: -7px -8px -7px 0;
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  transition: 0.3s;
-  border-radius: 50px;
-}
-
-.footer .footer-newsletter .newsletter-form input[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
 .footer .footer-top {
   padding-top: 50px;
 }
@@ -791,7 +775,8 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade para escurecer */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Ajuste a opacidade para escurecer */
   z-index: 1;
 }
 
@@ -1062,7 +1047,8 @@ section,
   content: "";
   height: 30px;
   width: 30px;
-  background-image: url('../img/services-icons/confirm-icon.png'); /* Caminho para a imagem */
+  background-image: url('../img/services-icons/confirm-icon.png');
+  /* Caminho para a imagem */
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -1081,234 +1067,6 @@ section,
   line-height: 24px;
   font-size: 14px;
 }
-
-/*--------------------------------------------------------------
-# Testimonials Section
---------------------------------------------------------------*/
-/* .testimonials {
-  padding: 80px 0;
-  position: relative;
-}
-
-.testimonials .testimonials-bg {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-.testimonials .container {
-  position: relative;
-  z-index: 3;
-}
-
-.testimonials .testimonials-carousel,
-.testimonials .testimonials-slider {
-  overflow: hidden;
-}
-
-.testimonials .testimonial-item {
-  text-align: center;
-}
-
-.testimonials .testimonial-item .testimonial-img {
-  width: 100px;
-  border-radius: 50%;
-  border: 6px solid color-mix(in srgb, var(--default-color), transparent 85%);
-  margin: 0 auto;
-}
-
-.testimonials .testimonial-item h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
-}
-
-.testimonials .testimonial-item h4 {
-  font-size: 14px;
-  margin: 0 0 15px 0;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-}
-
-.testimonials .testimonial-item .stars {
-  margin-bottom: 15px;
-}
-
-.testimonials .testimonial-item .stars i {
-  color: #ffc107;
-  margin: 0 1px;
-}
-
-.testimonials .testimonial-item .quote-icon-left,
-.testimonials .testimonial-item .quote-icon-right {
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  font-size: 26px;
-  line-height: 0;
-}
-
-.testimonials .testimonial-item .quote-icon-left {
-  display: inline-block;
-  left: -5px;
-  position: relative;
-}
-
-.testimonials .testimonial-item .quote-icon-right {
-  display: inline-block;
-  right: -5px;
-  position: relative;
-  top: 10px;
-  transform: scale(-1, -1);
-}
-
-.testimonials .testimonial-item p {
-  font-style: italic;
-  margin: 0 auto 15px auto;
-}
-
-.testimonials .swiper-wrapper {
-  height: auto;
-}
-
-.testimonials .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 50%);
-  opacity: 0.5;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--default-color);
-  opacity: 1;
-}
-
-@media (min-width: 992px) {
-  .testimonials .testimonial-item p {
-    width: 80%;
-  }
-} */
-
-/*--------------------------------------------------------------
-# Pricing Section
---------------------------------------------------------------*/
-/* .pricing .pricing-item {
-  background-color: var(--surface-color);
-  box-shadow: 0 3px 20px -2px rgba(0, 0, 0, 0.1);
-  border-top: 4px solid var(--background-color);
-  padding: 60px 40px;
-  height: 100%;
-  border-radius: 5px;
-}
-
-.pricing h3 {
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-.pricing h4 {
-  color: var(--accent-color);
-  font-size: 48px;
-  font-weight: 400;
-  font-family: var(--heading-font);
-  margin-bottom: 0;
-}
-
-.pricing h4 sup {
-  font-size: 28px;
-}
-
-.pricing h4 span {
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 18px;
-}
-
-.pricing ul {
-  padding: 20px 0;
-  list-style: none;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  text-align: left;
-  line-height: 20px;
-}
-
-.pricing ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-.pricing ul i {
-  color: #059652;
-  font-size: 24px;
-  padding-right: 3px;
-}
-
-.pricing ul .na {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.pricing ul .na i {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.pricing ul .na span {
-  text-decoration: line-through;
-}
-
-.pricing .buy-btn {
-  color: var(--accent-color);
-  display: inline-block;
-  padding: 8px 35px 10px 35px;
-  border-radius: 50px;
-  transition: none;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: var(--heading-font);
-  transition: 0.3s;
-  border: 1px solid var(--accent-color);
-}
-
-.pricing .buy-btn:hover {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-
-.pricing .featured {
-  border-top-color: var(--accent-color);
-}
-
-.pricing .featured .buy-btn {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-
-@media (max-width: 992px) {
-  .pricing .box {
-    max-width: 60%;
-    margin: 0 auto 30px auto;
-  }
-}
-
-@media (max-width: 767px) {
-  .pricing .box {
-    max-width: 80%;
-    margin: 0 auto 30px auto;
-  }
-}
-
-@media (max-width: 420px) {
-  .pricing .box {
-    max-width: 100%;
-    margin: 0 auto 30px auto;
-  }
-} */
 
 /*--------------------------------------------------------------
 # Faq Section
@@ -1388,118 +1146,6 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Team Section
---------------------------------------------------------------*/
-/* .team .team h3 {
-  font-size: 20px;
-}
-
-.team .team h3 a {
-  color: var(--heading-color);
-}
-
-.team .team .pic {
-  margin-bottom: 30px;
-}
-
-.team .team .pic img {
-  border-radius: 4px;
-}
-
-.team .team .position {
-  display: block;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: color-mix(in srgb, var(--heading-color), transparent 30%);
-}
-
-.team p {
-  line-height: 1.7;
-  color: var(--default-color);
-}
-
-.team .more {
-  position: relative;
-  padding-right: 30px;
-  display: inline-block;
-}
-
-.team .more span {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  font-size: 16px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  color: var(--contrast-color);
-  line-height: 1.6;
-  text-align: center;
-  transition: 0.3s all ease;
-}
-
-.team .more span:before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.team .more:hover {
-  color: var(--contrast-color);
-}
-
-.team .more:hover span {
-  background: var(--accent-color);
-}
-
-.team .more.dark {
-  color: var(--default-color);
-}
-
-.team .more.dark>span {
-  color: var(--default-color);
-}
-
-.team .more.dark:hover {
-  color: var(--accent-color);
-}
-
-.team .more.dark:hover span {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-}
-
-.team .swiper-wrapper {
-  height: auto;
-}
-
-.team .slider-nav a {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  background: var(--accent-color);
-  border-radius: 4px;
-  transition: 0.2s all ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.team .slider-nav a i {
-  color: var(--contrast-color);
-}
-
-.team .slider-nav a:hover {
-  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
-}
-
-.team .slider-nav a:first-child {
-  margin-right: 5px;
-} */
-
-/*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
 .contact .info-item+.info-item {
@@ -1573,72 +1219,6 @@ section,
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
-
-/*--------------------------------------------------------------
-# Service Details Section
---------------------------------------------------------------*/
-/* .service-details .services-list {
-  background-color: var(--surface-color);
-  padding: 10px 30px;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  margin-bottom: 20px;
-}
-
-.service-details .services-list a {
-  display: block;
-  line-height: 1;
-  padding: 8px 0 8px 15px;
-  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
-  margin: 20px 0;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  transition: 0.3s;
-}
-
-.service-details .services-list a.active {
-  color: var(--heading-color);
-  font-weight: 700;
-  border-color: var(--accent-color);
-}
-
-.service-details .services-list a:hover {
-  border-color: var(--accent-color);
-}
-
-.service-details .services-img {
-  margin-bottom: 20px;
-}
-
-.service-details h3 {
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.service-details h4 {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.service-details p {
-  font-size: 15px;
-}
-
-.service-details ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.service-details ul li {
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-}
-
-.service-details ul i {
-  font-size: 20px;
-  margin-right: 8px;
-  color: var(--accent-color);
-} */
 
 /*--------------------------------------------------------------
 # Starter Section Section

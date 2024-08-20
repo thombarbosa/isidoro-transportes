@@ -1,12 +1,12 @@
 import throttle from 'lodash.throttle';
 import debounce from 'lodash.debounce';
 
-var callback = function callback() {};
+var callback = function callback() { };
 
 function containsAOSNode(nodes) {
   var i = void 0,
-      currentNode = void 0,
-      result = void 0;
+    currentNode = void 0,
+    result = void 0;
 
   for (i = 0; i < nodes.length; i += 1) {
     currentNode = nodes[i];
@@ -194,9 +194,9 @@ var fireEvent = function fireEvent(eventName, data) {
  */
 var applyClasses = function applyClasses(el, top) {
   var options = el.options,
-      position = el.position,
-      node = el.node,
-      data = el.data;
+    position = el.position,
+    node = el.node,
+    data = el.data;
 
 
   var hide = function hide() {

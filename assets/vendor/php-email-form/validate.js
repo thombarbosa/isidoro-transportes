@@ -1,85 +1,77 @@
-/**
-* PHP Email Form Validation - v3.9
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
-(function () {
-  "use strict";
+document.querySelector('.php-email-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
 
-  let forms = document.querySelectorAll('.php-email-form');
+  // Validar e-mail
+  const email = formData.get('email');
+  if (!validateEmail(email)) {
+      form.querySelector('.error-message').innerText = 'Endereço de e-mail inválido.';
+      form.querySelector('.error-message').classList.add('d-block');
+      hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+      return;
+  }
 
-  forms.forEach( function(e) {
-    e.addEventListener('submit', function(event) {
-      event.preventDefault();
+  // Validar número de telefone
+  const telefone = formData.get('telefone');
+  if (!validatePhoneNumber(telefone)) {
+      form.querySelector('.error-message').innerText = 'Número de telefone inválido. Deve conter exatamente 11 dígitos.';
+      form.querySelector('.error-message').classList.add('d-block');
+      hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+      return;
+  }
 
-      let thisForm = this;
-
-      let action = thisForm.getAttribute('action');
-      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
-      
-      if( ! action ) {
-        displayError(thisForm, 'The form action property is not set!');
-        return;
-      }
-      thisForm.querySelector('.loading').classList.add('d-block');
-      thisForm.querySelector('.error-message').classList.remove('d-block');
-      thisForm.querySelector('.sent-message').classList.remove('d-block');
-
-      let formData = new FormData( thisForm );
-
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
-            try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
-              .then(token => {
-                formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
-              })
-            } catch(error) {
-              displayError(thisForm, error);
-            }
-          });
-        } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
-        }
-      } else {
-        php_email_form_submit(thisForm, action, formData);
-      }
-    });
-  });
-
-  function php_email_form_submit(thisForm, action, formData) {
-    fetch(action, {
+  // Se todas as validações passarem, enviar o formulário
+  fetch(form.action, {
       method: 'POST',
       body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
-    })
-    .then(response => {
-      if( response.ok ) {
-        return response.text();
+      headers: { 'Accept': 'application/json' }
+  }).then(response => {
+      if (response.ok) {
+          form.querySelector('.loading').classList.remove('d-block');
+          form.querySelector('.sent-message').innerText = 'Sua mensagem foi enviada. Obrigado!';
+          form.querySelector('.sent-message').classList.add('d-block');
+          form.reset();
+          hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
       } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+          return response.json().then(data => {
+              form.querySelector('.loading').classList.remove('d-block');
+              form.querySelector('.error-message').innerText = data.error || 'Erro no envio do formulário.';
+              form.querySelector('.error-message').classList.add('d-block');
+              hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+          });
       }
-    })
-    .then(data => {
-      thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
-      } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
-      }
-    })
-    .catch((error) => {
-      displayError(thisForm, error);
+  }).catch(error => {
+      form.querySelector('.loading').classList.remove('d-block');
+      form.querySelector('.error-message').innerText = 'Erro no envio do formulário. Tente novamente.';
+      form.querySelector('.error-message').classList.add('d-block');
+      hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+  });
+});
+
+// Função para validar e-mail
+function validateEmail(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
+
+// Função para validar número de telefone (apenas números e deve ter exatamente 11 dígitos)
+function validatePhoneNumber(phone) {
+  // Remove caracteres não numéricos
+  const cleanedPhone = phone.replace(/\D/g, '');
+  
+  // Verifica se o número limpo tem exatamente 11 dígitos
+  const phonePattern = /^\d{11}$/;
+  return phonePattern.test(cleanedPhone);
+}
+
+// Função para esconder mensagens de erro e confirmação após um período de tempo
+function hideMessagesAfterDelay(form, delay) {
+  setTimeout(() => {
+    form.querySelectorAll('.error-message, .sent-message').forEach(el => {
+      el.classList.remove('d-block'); // Remove a classe que exibe a mensagem
+      // Remove o texto das mensagens para evitar que permaneçam visíveis
+      el.innerText = ''; // Limpa o texto das mensagens
     });
-  }
-
-  function displayError(thisForm, error) {
-    thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
-    thisForm.querySelector('.error-message').classList.add('d-block');
-  }
-
-})();
+  }, delay);
+}
