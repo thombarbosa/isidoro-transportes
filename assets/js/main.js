@@ -217,7 +217,7 @@
  */
 window.addEventListener('scroll', function () {
   const whatsappButton = document.querySelector('.whatsapp-button');
-  if (window.scrollY > 100) { // Define o ponto de rolagem (100px neste exemplo)
+  if (window.scrollY > 100) { // Define o ponto de rolagem 
     whatsappButton.classList.add('show');
   } else {
     whatsappButton.classList.remove('show');
