@@ -15,7 +15,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(ev
   // Validar número de telefone
   const telefone = formData.get('telefone');
   if (!validatePhoneNumber(telefone)) {
-      form.querySelector('.error-message').innerText = 'Número de telefone inválido. Deve conter exatamente 11 dígitos.';
+      form.querySelector('.error-message').innerText = 'Número de telefone inválido.';
       form.querySelector('.error-message').classList.add('d-block');
       hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
       return;

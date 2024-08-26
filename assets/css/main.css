@@ -145,14 +145,16 @@ h6 {
 }
 
 /* CSS para mensagens com transição suave */
-.error-message, .sent-message {
+.error-message,
+.sent-message {
   opacity: 1;
   transition: opacity 0.4s ease-out;
 }
 
 .hidden {
   opacity: 0;
-  pointer-events: none; /* Impede interações com o elemento enquanto está oculto */
+  pointer-events: none;
+  /* Impede interações com o elemento enquanto está oculto */
 }
 
 .d-block {
@@ -203,7 +205,8 @@ h6 {
   z-index: 997;
 
   display: flex;
-  justify-content: space-between; /* Distribui o logo à esquerda e o menu ao centro */
+  justify-content: space-between;
+  /* Distribui o logo à esquerda e o menu ao centro */
   align-items: center;
   padding: 15px 0;
 }
@@ -255,7 +258,7 @@ h6 {
 
   .header .navmenu {
     order: 3;
-    
+
   }
 }
 
@@ -273,7 +276,8 @@ h6 {
   .navmenu {
     padding: 0;
     margin: 0 auto;
-    transform: translateX(-145px); /* Ajuste esse valor para mover o menu */
+    transform: translateX(-145px);
+    /* Ajuste esse valor para mover o menu */
   }
 
   .navmenu ul {
@@ -319,62 +323,6 @@ h6 {
   .navmenu .active:focus {
     color: var(--nav-hover-color);
   }
-
-  /* .navmenu .dropdown ul {
-    margin: 0;
-    padding: 10px 0;
-    background: var(--nav-dropdown-background-color);
-    display: block;
-    position: absolute;
-    visibility: hidden;
-    left: 14px;
-    top: 130%;
-    opacity: 0;
-    transition: 0.3s;
-    border-radius: 4px;
-    z-index: 99;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .navmenu .dropdown ul li {
-    min-width: 200px;
-  }
-
-  .navmenu .dropdown ul a {
-    padding: 10px 20px;
-    font-size: 15px;
-    text-transform: none;
-    color: var(--nav-dropdown-color);
-  }
-
-  .navmenu .dropdown ul a i {
-    font-size: 12px;
-  }
-
-  .navmenu .dropdown ul a:hover,
-  .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover>a {
-    color: var(--nav-dropdown-hover-color);
-  }
-
-  .navmenu .dropdown:hover>ul {
-    opacity: 1;
-    top: 100%;
-    visibility: visible;
-  }
-
-  .navmenu .dropdown .dropdown ul {
-    top: 0;
-    left: -90%;
-    visibility: hidden;
-  }
-
-  .navmenu .dropdown .dropdown:hover>ul {
-    opacity: 1;
-    top: 0;
-    left: -100%;
-    visibility: visible;
-  } */
 }
 
 /* Navmenu - Mobile */
@@ -455,27 +403,6 @@ h6 {
     color: var(--contrast-color);
     transform: rotate(180deg);
   }
-
-  /* .navmenu .dropdown ul {
-    position: static;
-    display: none;
-    z-index: 99;
-    padding: 10px 0;
-    margin: 10px 20px;
-    background-color: var(--nav-dropdown-background-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-    box-shadow: none;
-    transition: all 0.5s ease-in-out;
-  }
-
-  .navmenu .dropdown ul ul {
-    background-color: rgba(33, 37, 41, 0.1);
-  }
-
-  .navmenu .dropdown>.dropdown-active {
-    display: block;
-    background-color: rgba(33, 37, 41, 0.03);
-  } */
 
   .mobile-nav-active {
     overflow: hidden;
@@ -1058,7 +985,6 @@ section,
   height: 30px;
   width: 30px;
   background-image: url('../img/services-icons/confirm-icon.png');
-  /* Caminho para a imagem */
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -1076,83 +1002,6 @@ section,
 .services .service-item .description {
   line-height: 24px;
   font-size: 14px;
-}
-
-/*--------------------------------------------------------------
-# Faq Section
---------------------------------------------------------------*/
-.faq .faq-container .faq-item {
-  position: relative;
-  padding: 20px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-  overflow: hidden;
-}
-
-.faq .faq-container .faq-item:last-child {
-  margin-bottom: 0;
-}
-
-.faq .faq-container .faq-item h3 {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  margin: 0 30px 0 0;
-  transition: 0.3s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.faq .faq-container .faq-item h3 .num {
-  color: var(--accent-color);
-  padding-right: 5px;
-}
-
-.faq .faq-container .faq-item h3:hover {
-  color: var(--accent-color);
-}
-
-.faq .faq-container .faq-item .faq-content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: 0.3s ease-in-out;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.faq .faq-container .faq-item .faq-content p {
-  margin-bottom: 0;
-  overflow: hidden;
-}
-
-.faq .faq-container .faq-item .faq-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 16px;
-  line-height: 0;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.faq .faq-container .faq-item .faq-toggle:hover {
-  color: var(--accent-color);
-}
-
-.faq .faq-container .faq-active h3 {
-  color: var(--accent-color);
-}
-
-.faq .faq-container .faq-active .faq-content {
-  grid-template-rows: 1fr;
-  visibility: visible;
-  opacity: 1;
-  padding-top: 10px;
-}
-
-.faq .faq-container .faq-active .faq-toggle {
-  transform: rotate(90deg);
-  color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
@@ -1229,10 +1078,3 @@ section,
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
-
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-/* .starter-section {
-  Add your styles here 
-} */
