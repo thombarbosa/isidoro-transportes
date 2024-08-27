@@ -8,7 +8,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(ev
   if (!validateEmail(email)) {
       form.querySelector('.error-message').innerText = 'Endereço de e-mail inválido.';
       form.querySelector('.error-message').classList.add('d-block');
-      hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+      hideMessagesAfterDelay(form, 5000);
       return;
   }
 
@@ -17,7 +17,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(ev
   if (!validatePhoneNumber(telefone)) {
       form.querySelector('.error-message').innerText = 'Número de telefone inválido.';
       form.querySelector('.error-message').classList.add('d-block');
-      hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+      hideMessagesAfterDelay(form, 5000);
       return;
   }
 
@@ -32,20 +32,20 @@ document.querySelector('.php-email-form').addEventListener('submit', function(ev
           form.querySelector('.sent-message').innerText = 'Sua mensagem foi enviada. Obrigado!';
           form.querySelector('.sent-message').classList.add('d-block');
           form.reset();
-          hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+          hideMessagesAfterDelay(form, 5000);
       } else {
           return response.json().then(data => {
               form.querySelector('.loading').classList.remove('d-block');
               form.querySelector('.error-message').innerText = data.error || 'Erro no envio do formulário.';
               form.querySelector('.error-message').classList.add('d-block');
-              hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+              hideMessagesAfterDelay(form, 5000);
           });
       }
   }).catch(error => {
       form.querySelector('.loading').classList.remove('d-block');
       form.querySelector('.error-message').innerText = 'Erro no envio do formulário. Tente novamente.';
       form.querySelector('.error-message').classList.add('d-block');
-      hideMessagesAfterDelay(form, 5000); // Esconde as mensagens após 5 segundos
+      hideMessagesAfterDelay(form, 5000);
   });
 });
 
@@ -55,7 +55,7 @@ function validateEmail(email) {
   return emailPattern.test(email);
 }
 
-// Função para validar número de telefone (apenas números e deve ter exatamente 11 dígitos)
+// Função para validar número de telefone
 function validatePhoneNumber(phone) {
   // Remove caracteres não numéricos
   const cleanedPhone = phone.replace(/\D/g, '');
